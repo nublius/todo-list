@@ -13,4 +13,13 @@ export class Project {
 		const toDo = new Item(title, description, dueDate, priority);
 		this.toDos.push(toDo);
 	}
+
+	removeToDo = (item) => {
+		if (!item instanceof Item) {
+			return;
+		}
+
+		this.toDos.pop(item);
+		item = null;
+	}
 }
