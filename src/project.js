@@ -22,4 +22,8 @@ export class Project {
 		this.toDos.pop(item);
 		item = null;
 	}
+
+	getToDos = () => {
+		return this.toDos;
+	}
 }

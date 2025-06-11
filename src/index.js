@@ -1,5 +1,7 @@
 import "./styles.css";
 
-import { Item } from "./todo-item.js";
+import { ProjectManager } from "./project-manager.js";
 
-console.log("Hello, World!")
+ProjectManager.addProject("yep", "true", "01/01/2002", "1");
+
+ProjectManager.showProjects();
