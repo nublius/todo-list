@@ -1,11 +1,10 @@
 import { Item } from "./todo-item.js";
 
 export class Project {
-	constructor(title, description, dueDate, priority) {
+	constructor(title, description, dueDate) {
 		this.title = title;
 		this.description = description;
 		this.dueDate = dueDate;
-		this.priority = priority;
 		this.toDos = [];
 	}
 

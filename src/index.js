@@ -4,4 +4,4 @@ import { ProjectManager } from "./project-manager.js";
 
 ProjectManager.addProject("yep", "true", "01/01/2002", "1");
 
-ProjectManager.showProjects();
+console.log(ProjectManager.showProjects());

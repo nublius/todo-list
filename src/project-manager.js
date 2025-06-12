@@ -3,17 +3,31 @@ import { Project } from "./project.js";
 export const ProjectManager = (function() {
 	const projectArray = [];
 
-	const addProject = (title, description, dueDate, priority) => {
-		const project = new Project(title, description, dueDate, priority);
-		projectArray.push(project);
+	const checkDuplicateTitle = (title) => {
+		return projectArray.some(project => project.title === title);
 	}
 
-	const removeProject = (project) => {
-		if (!project instanceof Project) {
+	const addProject = (title, description, dueDate) => {
+		if (checkDuplicateTitle(title)) {
+			console.warn("Title is already used.");
 			return;
 		}
 
-		projectArray.pop(project);
+		const project = new Project(title, description, dueDate);
+		projectArray.push(project);
+	}
+
+	const removeProject = (projectTitle) => {
+		const targetProject = projectArray.find(project => project.title === projectTitle);
+
+		if (!(targetProject instanceof Project)) {
+			return;
+		}
+
+		const index = projectArray.indexOf(targetProject);
+		if (index !== -1) {
+			projectArray.splice(index, 1);
+		}
 	}
 
 	const showProjects = () => {
