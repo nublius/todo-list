@@ -7,13 +7,13 @@ export const ProjectManager = (function() {
 		return projectArray.some(project => project.title === title);
 	}
 
-	const addProject = (title, description, dueDate) => {
+	const addProject = (title) => {
 		if (checkDuplicateTitle(title)) {
 			console.warn("Title is already used.");
 			return;
 		}
 
-		const project = new Project(title, description, dueDate);
+		const project = new Project(title);
 		projectArray.push(project);
 	}
 

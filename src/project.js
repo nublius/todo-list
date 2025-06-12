@@ -1,10 +1,8 @@
 import { Item } from "./todo-item.js";
 
 export class Project {
-	constructor(title = "Untitled", description = "", dueDate = null) {
+	constructor(title = "Untitled") {
 		this.title = title;
-		this.description = description;
-		this.dueDate = dueDate;
 		this.toDos = [];
 	}
 

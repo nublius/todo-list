@@ -1,5 +1,5 @@
 export class Item {
-	constructor(title, description, dueDate, priority) {
+	constructor(title = "Untitled", description = "", dueDate = null, priority = null) {
 		this.title = title;
 		this.description = description;
 		this.dueDate = dueDate;
