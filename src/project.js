@@ -1,28 +1,32 @@
 import { Item } from "./todo-item.js";
 
 export class Project {
-	constructor(title, description, dueDate) {
+	constructor(title = "Untitled", description = "", dueDate = null) {
 		this.title = title;
 		this.description = description;
 		this.dueDate = dueDate;
 		this.toDos = [];
 	}
 
-	addToDo = (title, description, dueDate, priority) => {
+	addToDo(title, description, dueDate, priority) {
 		const toDo = new Item(title, description, dueDate, priority);
 		this.toDos.push(toDo);
 	}
 
-	removeToDo = (item) => {
-		if (!item instanceof Item) {
+	removeToDo(item) {
+		if (!(item instanceof Item)) {
 			return;
 		}
 
-		this.toDos.pop(item);
-		item = null;
+		const index = this.toDos.indexOf(item);
+
+		if (index !== -1) {
+			this.toDos.splice(index, 1);
+			item = null;
+		}
 	}
 
-	getToDos = () => {
+	getToDos() {
 		return this.toDos;
 	}
 }

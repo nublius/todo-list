@@ -4,5 +4,10 @@ export class Item {
 		this.description = description;
 		this.dueDate = dueDate;
 		this.priority = priority;
+		this.done = false;
+	}
+
+	getProperties() {
+		console.table(this);
 	}
 }

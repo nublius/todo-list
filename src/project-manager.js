@@ -27,16 +27,17 @@ export const ProjectManager = (function() {
 		const index = projectArray.indexOf(targetProject);
 		if (index !== -1) {
 			projectArray.splice(index, 1);
+			targetProject = null;
 		}
 	}
 
-	const showProjects = () => {
-		console.log(projectArray);
+	const getProjects = () => {
+		return projectArray;
 	}
 
 	return {
 		addProject,
 		removeProject,
-		showProjects
+		getProjects
 	}
 })();
