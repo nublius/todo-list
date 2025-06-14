@@ -8,3 +8,26 @@ body {
 	width: 100vw;
 	height: 100vh;
 }
+
+.main__container {
+	display: grid;
+	grid-template-rows: 1fr 4fr;
+	grid-template-columns: 1fr 4fr;
+	height: 100%;
+	width: 100%;
+}
+
+.header__container {
+	background-color: blue;
+	grid-area: 1 / 2 / 2 / 2;
+}
+
+.body__container {
+	background-color: beige;
+	grid-area: 2 / 2 / 3 / 3;
+}
+
+.sidebar__container {
+	background-color: grey;
+	grid-area: 1 / 1 / 3 / 2;
+}
