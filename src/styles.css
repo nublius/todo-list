@@ -11,23 +11,23 @@ body {
 
 .main__container {
 	display: grid;
-	grid-template-rows: 1fr 4fr;
+	grid-template-rows: 1fr 5fr;
 	grid-template-columns: 1fr 4fr;
 	height: 100%;
 	width: 100%;
 }
 
 .header__container {
-	background-color: blue;
+	background-color: #C9DAEA;
 	grid-area: 1 / 2 / 2 / 2;
 }
 
 .body__container {
-	background-color: beige;
+	background-color: #2E294E;
 	grid-area: 2 / 2 / 3 / 3;
 }
 
 .sidebar__container {
-	background-color: grey;
+	background-color: #1B998B;
 	grid-area: 1 / 1 / 3 / 2;
 }
