@@ -61,6 +61,8 @@ body {
 	background-color: #2E294E;
 	border-radius: 5px;
 	color: #A4AEBA;
+	padding: 5px;
+	border-left: 8px solid #EEC643;
 }
 
 .task__title {
