@@ -58,8 +58,9 @@ body {
 }
 
 .task {
-	background-color: white;
+	background-color: #2E294E;
 	border-radius: 5px;
+	color: #A4AEBA;
 }
 
 .task__title {
