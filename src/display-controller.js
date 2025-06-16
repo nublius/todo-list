@@ -3,6 +3,8 @@ import { ProjectManager } from "./project-manager.js";
 ProjectManager.addProject("Tasks");
 ProjectManager.addProject("Project 1");
 
+ProjectManager.getProject("Tasks").addToDo("Yep", "Description here", "01/01/2002", "1");
+
 export const Controller = (function() {
 	const initDisplay = () => {
 		const projectsContainer = document.querySelector(".projects__list");
@@ -13,7 +15,7 @@ export const Controller = (function() {
 	}
 
 	const loadProjects = () => {
-		const projects = ProjectManager.getProjects();
+		const projects = ProjectManager.getProjectArray();
 
 		const length = projects.length;
 
@@ -31,5 +33,32 @@ export const Controller = (function() {
 		}
 	}
 
+	const loadProjectTasks = (projectTitle) => {
+		const targetProject = ProjectManager.getProject(projectTitle);
+
+		const tasksArray = targetProject.getToDos();
+		const length = tasksArray.length;
+
+		for (let i = 0; i < length; i++) {
+			const taskContainer = document.createElement("div");
+			taskContainer.classList = "task";
+			initDisplay().tasksContainer.appendChild(taskContainer);
+
+			const taskTitle = tasksArray[i].title;
+			const titleDom = document.createElement("p");
+			titleDom.classList = "task__title";
+			titleDom.innerText = taskTitle;
+			taskContainer.appendChild(titleDom);
+
+			const taskDescription = tasksArray[i].description;
+			const descDom = document.createElement("p");
+			descDom.classList = "task__info";
+			descDom.innerText = taskDescription;
+			taskContainer.appendChild(descDom);
+
+		}
+	}
+
 	loadProjects();
+	loadProjectTasks("Tasks");
 })();

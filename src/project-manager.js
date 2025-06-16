@@ -17,12 +17,8 @@ export const ProjectManager = (function() {
 		projectArray.push(project);
 	}
 
-	const removeProject = (projectTitle) => {
-		const targetProject = projectArray.find(project => project.title === projectTitle);
-
-		if (!(targetProject instanceof Project)) {
-			return;
-		}
+	const removeProject = (title) => {
+		targetProject = getProject(title);
 
 		const index = projectArray.indexOf(targetProject);
 		if (index !== -1) {
@@ -31,13 +27,24 @@ export const ProjectManager = (function() {
 		}
 	}
 
-	const getProjects = () => {
+	const getProjectArray = () => {
 		return projectArray;
+	}
+
+	const getProject = (title) => {
+		const targetProject = projectArray.find(project => project.title === title);
+
+		if (!(targetProject instanceof Project)) {
+			return;
+		}
+
+		return targetProject;
 	}
 
 	return {
 		addProject,
 		removeProject,
-		getProjects
+		getProjectArray,
+		getProject
 	}
 })();
