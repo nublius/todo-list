@@ -59,6 +59,11 @@ export const Controller = (function() {
 		}
 	}
 
+	const clearTasksContainer = () => {
+		initDisplay().tasksContainer.innerHTML = "";
+	}
+
 	loadProjects();
 	loadProjectTasks("Tasks");
+
 })();

@@ -18,10 +18,12 @@ export const ProjectManager = (function() {
 	}
 
 	const removeProject = (title) => {
-		targetProject = getProject(title);
+		const targetProject = getProject(title);
 
 		const index = projectArray.indexOf(targetProject);
 		if (index !== -1) {
+			targetProject.clearAllToDos();
+
 			projectArray.splice(index, 1);
 			targetProject = null;
 		}

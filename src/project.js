@@ -27,4 +27,11 @@ export class Project {
 	getToDos() {
 		return this.toDos;
 	}
+
+	clearAllToDos() {
+		const toDoArray = this.toDos;
+		for (let i = 0; i < toDoArray.length, i++;) {
+			toDoArray[i] = null;
+		}
+	}
 }
