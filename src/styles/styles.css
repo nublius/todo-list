@@ -77,6 +77,11 @@ button {
 
 .projects__add {
 	fill: #A4AEBA;
+	outline: none;
+}
+
+.projects__add>svg:active {
+	fill: #EEC643;
 }
 
 .icon {
