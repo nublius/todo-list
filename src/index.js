@@ -1,3 +1,4 @@
 import "./styles.css";
 
-import { ProjectManager } from "./project-manager.js";
+import { Controller } from "./display-controller.js";
+

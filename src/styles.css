@@ -58,6 +58,15 @@ body {
 	margin-bottom: 10px;
 }
 
+.project__button {
+	border: none;
+	background: none;
+	font-size: 1.4rem;
+	cursor: pointer;
+	font-weight: 500;
+	color: #A4AEBA;
+}
+
 .task {
 	background-color: #2E294E;
 	border-radius: 5px;
