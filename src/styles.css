@@ -58,13 +58,30 @@ body {
 	margin-bottom: 10px;
 }
 
-.project__button {
+button {
 	border: none;
 	background: none;
-	font-size: 1.4rem;
 	cursor: pointer;
+}
+
+.project__button {
+	font-size: 1.4rem;
 	font-weight: 500;
 	color: #A4AEBA;
+}
+
+.projects__upper {
+	display: flex;
+	justify-content: space-between;
+}
+
+.projects__add {
+	fill: #A4AEBA;
+}
+
+.icon {
+	height: 2rem;
+	width: 2rem;
 }
 
 .task {
