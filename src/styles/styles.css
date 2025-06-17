@@ -7,6 +7,7 @@
 
 body {
 	width: 100vw;
+	;
 	height: 100vh;
 }
 
@@ -75,11 +76,6 @@ button {
 	justify-content: space-between;
 }
 
-.projects__add {
-	fill: #A4AEBA;
-	outline: none;
-}
-
 .projects__add>svg:active {
 	fill: #EEC643;
 }
@@ -87,6 +83,8 @@ button {
 .icon {
 	height: 2rem;
 	width: 2rem;
+	fill: #A4AEBA;
+	outline: none;
 }
 
 .task {

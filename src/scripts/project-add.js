@@ -1,9 +1,15 @@
 export const ProjectAdder = (function() {
-	const button = document.querySelector(".projects__add");
+	const addButton = document.querySelector(".projects__add");
 
 	const modal = document.querySelector(".project__modal");
 
-	button.addEventListener("click", (event) => {
+	addButton.addEventListener("click", (event) => {
 		modal.showModal();
+	})
+
+	const exitButton = document.querySelector(".project__exit");
+
+	exitButton.addEventListener("click", (event) => {
+		modal.close();
 	})
 })();

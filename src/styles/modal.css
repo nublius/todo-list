@@ -8,8 +8,17 @@ dialog {
 	border: 2px solid #EEC643;
 }
 
+.project__exit {
+	align-self: flex-start;
+	justify-self: flex-end;
+	background: none;
+	margin-left: auto;
+}
+
 .project__modal__container {
 	width: 500px;
 	height: 600px;
 	background-color: #2E294E;
+	display: flex;
+	padding: 5px;
 }
