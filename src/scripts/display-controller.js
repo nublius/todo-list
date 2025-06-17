@@ -67,6 +67,7 @@ export const Controller = (function() {
 			formHandler();
 			ProjectAdder.modal.close();
 			loadProjects();
+			projectForm.reset();
 		});
 	};
 

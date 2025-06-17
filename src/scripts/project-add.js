@@ -11,6 +11,7 @@ export const ProjectAdder = (function() {
 
 	exitButton.addEventListener("click", (event) => {
 		modal.close();
+		document.querySelector("#project__form").reset();
 	})
 
 	return { modal };
