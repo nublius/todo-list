@@ -7,71 +7,87 @@ ProjectManager.addProject("Project 1");
 
 ProjectManager.findProject("Tasks").addToDo("Yep", "Description here", "01/01/2002", "1");
 
+ProjectManager.findProject("Project 1").addToDo("True", "YEPERS", "01/01/2002", "2");
+
 export const Controller = (function() {
+	let projectsContainer, tasksContainer, projectForm;
+
 	const initDisplay = () => {
-		const projectsContainer = document.querySelector(".projects__list");
-
-		const projectForm = document.querySelector("#project__form");
-
-		const tasksContainer = document.querySelector(".tasks__container");
-
-		return { projectsContainer, tasksContainer, projectForm };
-	}
+		projectsContainer = document.querySelector(".projects__list");
+		tasksContainer = document.querySelector(".tasks__container");
+		projectForm = document.querySelector("#project__form");
+	};
 
 	const loadProjects = () => {
+		projectsContainer.innerHTML = "";
+
 		const projects = ProjectManager.getProjectArray();
-
-		const length = projects.length;
-
-		for (let i = 0; i < length; i++) {
-			const projectTitle = projects[i].title;
+		for (let project of projects) {
 			const titleDom = document.createElement("li");
 
 			const projectButton = document.createElement("button");
 			projectButton.classList = "project__button";
-			projectButton.textContent = projectTitle;
+			projectButton.textContent = project.title;
+
+			projectButton.addEventListener("click", () => {
+				clearTasksContainer();
+				loadProjectTasks(project.title);
+			});
 
 			titleDom.appendChild(projectButton);
-
-			initDisplay().projectsContainer.appendChild(titleDom);
+			projectsContainer.appendChild(titleDom);
 		}
-	}
+	};
 
 	const loadProjectTasks = (projectTitle) => {
 		const targetProject = ProjectManager.findProject(projectTitle);
-
 		const tasksArray = targetProject.getToDos();
-		const length = tasksArray.length;
 
-		for (let i = 0; i < length; i++) {
+		for (let task of tasksArray) {
 			const taskContainer = document.createElement("div");
 			taskContainer.classList = "task";
-			initDisplay().tasksContainer.appendChild(taskContainer);
+			tasksContainer.appendChild(taskContainer);
 
-			const taskTitle = tasksArray[i].title;
 			const titleDom = document.createElement("p");
 			titleDom.classList = "task__title";
-			titleDom.innerText = taskTitle;
-			taskContainer.appendChild(titleDom);
+			titleDom.innerText = task.title;
 
-			const taskDescription = tasksArray[i].description;
 			const descDom = document.createElement("p");
 			descDom.classList = "task__info";
-			descDom.innerText = taskDescription;
-			taskContainer.appendChild(descDom);
+			descDom.innerText = task.description;
 
+			taskContainer.appendChild(titleDom);
+			taskContainer.appendChild(descDom);
 		}
-	}
+	};
 
 	const addProject = () => {
-		form = initDisplay().projectForm;
-	}
+		projectForm.addEventListener("submit", (event) => {
+			event.preventDefault();
+			formHandler();
+			ProjectAdder.modal.close();
+			loadProjects();
+		});
+	};
+
+	const formHandler = () => {
+		const title = projectForm.title.value;
+		const description = projectForm.description.value;
+
+		ProjectManager.addProject(title, description);
+	};
 
 	const clearTasksContainer = () => {
-		initDisplay().tasksContainer.innerHTML = "";
-	}
+		tasksContainer.innerHTML = "";
+	};
 
-	loadProjects();
-	loadProjectTasks("Tasks");
+	const init = () => {
+		initDisplay();
+		loadProjects();
+		loadProjectTasks("Tasks");
+		addProject();
+	};
+
+	return { init };
 
 })();

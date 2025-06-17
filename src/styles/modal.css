@@ -30,6 +30,16 @@ legend {
 	margin-left: auto;
 }
 
+.submit__project {
+	background-color: white;
+	height: 2.5rem;
+	width: 6rem;
+}
+
+#description {
+	height: 200px;
+}
+
 .project__modal__container {
 	width: 500px;
 	height: 600px;

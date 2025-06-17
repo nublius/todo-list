@@ -12,4 +12,6 @@ export const ProjectAdder = (function() {
 	exitButton.addEventListener("click", (event) => {
 		modal.close();
 	})
+
+	return { modal };
 })();

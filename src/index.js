@@ -4,6 +4,7 @@ import "./styles/modal.css";
 
 import { Controller } from "./scripts/display-controller.js";
 
+Controller.init();
 // TO DO:
 // finish project adder implementation
 // make task adder
