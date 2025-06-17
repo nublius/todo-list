@@ -8,6 +8,10 @@ dialog {
 	border: 2px solid #EEC643;
 }
 
+#project__form {
+	width: 100%;
+}
+
 legend,
 label {
 	color: #A4AEBA;
@@ -16,11 +20,23 @@ label {
 fieldset {
 	display: flex;
 	flex-direction: column;
+	border: none;
 }
 
 legend {
 	font-size: 1.4rem;
 	font-weight: 500;
+	padding-bottom: 10px;
+}
+
+label {
+	font-size: 1.3rem;
+}
+
+input[type="text"],
+textarea {
+	margin-bottom: 10px;
+	font-size: 1.2rem;
 }
 
 .project__exit {
@@ -37,7 +53,7 @@ legend {
 }
 
 #description {
-	height: 200px;
+	height: 120px;
 }
 
 .project__modal__container {
