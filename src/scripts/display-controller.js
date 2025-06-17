@@ -1,5 +1,7 @@
 import { ProjectManager } from "./project-manager.js";
 
+import { ProjectAdder } from "./project-add.js";
+
 ProjectManager.addProject("Tasks");
 ProjectManager.addProject("Project 1");
 
@@ -9,9 +11,11 @@ export const Controller = (function() {
 	const initDisplay = () => {
 		const projectsContainer = document.querySelector(".projects__list");
 
+		const projectForm = document.querySelector("#project__form");
+
 		const tasksContainer = document.querySelector(".tasks__container");
 
-		return { projectsContainer, tasksContainer };
+		return { projectsContainer, tasksContainer, projectForm };
 	}
 
 	const loadProjects = () => {
@@ -57,6 +61,10 @@ export const Controller = (function() {
 			taskContainer.appendChild(descDom);
 
 		}
+	}
+
+	const addProject = () => {
+		form = initDisplay().projectForm;
 	}
 
 	const clearTasksContainer = () => {
