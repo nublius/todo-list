@@ -31,6 +31,23 @@ body {
 	grid-area: 2 / 2 / 3 / 3;
 	padding: 10px;
 	color: #0E0B24;
+	display: grid;
+	grid-template-columns: 3fr 1fr;
+}
+
+.project__info {
+	width: 100%;
+	background-color: #504A75;
+	border-radius: 10px;
+}
+
+.project__desc {
+	padding: 10px;
+	font-size: 1.2rem;
+}
+
+.project__header {
+	padding: 10px;
 }
 
 .sidebar__container {

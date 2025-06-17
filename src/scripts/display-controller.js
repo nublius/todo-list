@@ -2,10 +2,10 @@ import { ProjectManager } from "./project-manager.js";
 
 import { ProjectAdder } from "./project-add.js";
 
-ProjectManager.addProject("Tasks");
-ProjectManager.addProject("Project 1");
+ProjectManager.addProject("To Dos", "description wowowwwwow");
+ProjectManager.addProject("Project 1", "lorem ipsum decliaieafnkewaf");
 
-ProjectManager.findProject("Tasks").addToDo("Yep", "Description here", "01/01/2002", "1");
+ProjectManager.findProject("To Dos").addToDo("Yep", "Description here", "01/01/2002", "1");
 
 ProjectManager.findProject("Project 1").addToDo("True", "YEPERS", "01/01/2002", "2");
 
@@ -42,6 +42,12 @@ export const Controller = (function() {
 	const loadProjectTasks = (projectTitle) => {
 		const targetProject = ProjectManager.findProject(projectTitle);
 		const tasksArray = targetProject.getToDos();
+
+		const projectHeader = document.querySelector(".project__header");
+		projectHeader.textContent = targetProject.title;
+
+		const projectDesc = document.querySelector(".project__desc");
+		projectDesc.textContent = targetProject.description;
 
 		for (let task of tasksArray) {
 			const taskContainer = document.createElement("div");
@@ -85,7 +91,7 @@ export const Controller = (function() {
 	const init = () => {
 		initDisplay();
 		loadProjects();
-		loadProjectTasks("Tasks");
+		loadProjectTasks("To Dos");
 		addProject();
 	};
 
