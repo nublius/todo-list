@@ -36,8 +36,14 @@
 	<dialog class="project__modal" closedby="any">
 		<div class="project__modal__container">
 			<form>
-				<label for="title">Title</label>
-				<input type="text" id="title" name="title" required>
+				<fieldset>
+					<legend class="project__legend">New Project</legend>
+					<label for="title">Title</label>
+					<input type="text" id="title" name="title" required>
+
+					<label for="description">Description</label>
+					<input type="text" id="description" name="description">
+				</fieldset>
 			</form>
 			<button class="project__exit"><svg class="icon" xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 24 24">

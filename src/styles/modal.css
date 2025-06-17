@@ -8,6 +8,11 @@ dialog {
 	border: 2px solid #EEC643;
 }
 
+legend,
+label {
+	color: #A4AEBA;
+}
+
 .project__exit {
 	align-self: flex-start;
 	justify-self: flex-end;

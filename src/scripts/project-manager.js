@@ -7,18 +7,18 @@ export const ProjectManager = (function() {
 		return projectArray.some(project => project.title === title);
 	}
 
-	const addProject = (title) => {
+	const addProject = (title, description) => {
 		if (checkDuplicateTitle(title)) {
 			console.warn("Title is already used.");
 			return;
 		}
 
-		const project = new Project(title);
+		const project = new Project(title, description);
 		projectArray.push(project);
 	}
 
 	const removeProject = (title) => {
-		const targetProject = getProject(title);
+		const targetProject = findProject(title);
 
 		const index = projectArray.indexOf(targetProject);
 		if (index !== -1) {
@@ -33,7 +33,7 @@ export const ProjectManager = (function() {
 		return projectArray;
 	}
 
-	const getProject = (title) => {
+	const findProject = (title) => {
 		const targetProject = projectArray.find(project => project.title === title);
 
 		if (!(targetProject instanceof Project)) {
@@ -47,6 +47,6 @@ export const ProjectManager = (function() {
 		addProject,
 		removeProject,
 		getProjectArray,
-		getProject
+		findProject
 	}
 })();

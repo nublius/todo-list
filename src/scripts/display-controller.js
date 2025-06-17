@@ -3,7 +3,7 @@ import { ProjectManager } from "./project-manager.js";
 ProjectManager.addProject("Tasks");
 ProjectManager.addProject("Project 1");
 
-ProjectManager.getProject("Tasks").addToDo("Yep", "Description here", "01/01/2002", "1");
+ProjectManager.findProject("Tasks").addToDo("Yep", "Description here", "01/01/2002", "1");
 
 export const Controller = (function() {
 	const initDisplay = () => {
@@ -34,7 +34,7 @@ export const Controller = (function() {
 	}
 
 	const loadProjectTasks = (projectTitle) => {
-		const targetProject = ProjectManager.getProject(projectTitle);
+		const targetProject = ProjectManager.findProject(projectTitle);
 
 		const tasksArray = targetProject.getToDos();
 		const length = tasksArray.length;
