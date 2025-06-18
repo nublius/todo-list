@@ -19,6 +19,15 @@ body {
 	width: 100%;
 }
 
+.project__header__container {
+	display: flex;
+	gap: 5px;
+}
+
+svg.dark {
+	fill: #2E294E;
+}
+
 .header__container {
 	background-color: #EEC643;
 	grid-area: 1 / 2 / 2 / 2;

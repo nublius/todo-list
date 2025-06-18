@@ -2,6 +2,8 @@ import { ProjectManager } from "./project-manager.js";
 
 import { ProjectAdder } from "./project-add.js";
 
+import { TaskAdder } from "./task-add.js";
+
 ProjectManager.addProject("To Dos", "description wowowwwwow");
 ProjectManager.addProject("Project 1", "lorem ipsum decliaieafnkewaf");
 
@@ -10,7 +12,7 @@ ProjectManager.findProject("To Dos").addToDo("Yep", "Description here", "01/01/2
 ProjectManager.findProject("Project 1").addToDo("True", "YEPERS", "01/01/2002", "2");
 
 export const Controller = (function() {
-	let projectsContainer, tasksContainer, projectForm;
+	let projectsContainer, tasksContainer, projectForm, currentProject;
 
 	const initDisplay = () => {
 		projectsContainer = document.querySelector(".projects__list");
@@ -32,6 +34,7 @@ export const Controller = (function() {
 			projectButton.addEventListener("click", () => {
 				clearTasksContainer();
 				loadProjectTasks(project.title);
+				currentProject = project;
 			});
 
 			titleDom.appendChild(projectButton);
