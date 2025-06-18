@@ -79,10 +79,12 @@ svg.dark {
 	grid-auto-rows: auto;
 	overflow: auto;
 	gap: 15px;
+	padding: 10px;
 }
 
 .project__title {
 	margin-bottom: 10px;
+	padding-left: 10px;
 }
 
 button {

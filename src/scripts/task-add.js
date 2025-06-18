@@ -13,4 +13,6 @@ export const TaskAdder = (function() {
 		modal.close();
 		document.querySelector("#task__form").reset();
 	})
+
+	return { modal };
 })();

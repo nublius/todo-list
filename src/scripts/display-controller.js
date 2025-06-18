@@ -12,12 +12,15 @@ ProjectManager.findProject("To Dos").addToDo("Yep", "Description here", "01/01/2
 ProjectManager.findProject("Project 1").addToDo("True", "YEPERS", "01/01/2002", "2");
 
 export const Controller = (function() {
-	let projectsContainer, tasksContainer, projectForm, currentProject;
+	let projectsContainer, tasksContainer, projectForm, taskForm, currentProject;
+
+	currentProject = ProjectManager.findProject("To Dos");
 
 	const initDisplay = () => {
 		projectsContainer = document.querySelector(".projects__list");
 		tasksContainer = document.querySelector(".tasks__container");
 		projectForm = document.querySelector("#project__form");
+		taskForm = document.querySelector("#task__form");
 	};
 
 	const loadProjects = () => {
@@ -73,19 +76,38 @@ export const Controller = (function() {
 	const addProject = () => {
 		projectForm.addEventListener("submit", (event) => {
 			event.preventDefault();
-			formHandler();
+			projectFormHandler();
 			ProjectAdder.modal.close();
 			loadProjects();
 			projectForm.reset();
 		});
 	};
 
-	const formHandler = () => {
+	const addTask = () => {
+		taskForm.addEventListener("submit", (event) => {
+			event.preventDefault();
+			taskFormHandler();
+			TaskAdder.modal.close();
+			tasksContainer.innerHTML = "";
+			loadProjectTasks(currentProject.title);
+			taskForm.reset();
+		})
+	}
+
+	const projectFormHandler = () => {
 		const title = projectForm.title.value;
 		const description = projectForm.description.value;
 
 		ProjectManager.addProject(title, description);
 	};
+
+	const taskFormHandler = () => {
+		const title = taskForm.title.value;
+		const description = taskForm.description.value;
+		const dueDate = taskForm.dueDate.value;
+
+		currentProject.addToDo(title, description, dueDate, "1");
+	}
 
 	const clearTasksContainer = () => {
 		tasksContainer.innerHTML = "";
@@ -96,6 +118,7 @@ export const Controller = (function() {
 		loadProjects();
 		loadProjectTasks("To Dos");
 		addProject();
+		addTask();
 	};
 
 	return { init };
