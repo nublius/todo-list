@@ -122,6 +122,14 @@ button {
 	padding: 5px;
 	border-left: 8px solid #EEC643;
 	min-height: 200px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.settings__container {
+	margin-top: auto;
+	align-self: flex-end;
 }
 
 .task__title {
