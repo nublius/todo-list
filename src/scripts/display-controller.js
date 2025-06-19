@@ -28,6 +28,13 @@ export const Controller = (function() {
 
 		const projects = ProjectManager.getProjectArray();
 		for (let project of projects) {
+			const titleDomContainer = document.createElement("div");
+			titleDomContainer.classList = "title__dom__container";
+			titleDomContainer.id = project.title;
+
+			const deleteProjectButton = document.createElement("button");
+			deleteProjectButton.innerText = "Delete";
+
 			const titleDom = document.createElement("li");
 
 			const projectButton = document.createElement("button");
@@ -40,8 +47,14 @@ export const Controller = (function() {
 				currentProject = project;
 			});
 
+			deleteProjectButton.addEventListener("click", () => {
+				removeProject(project.title);
+			})
+
 			titleDom.appendChild(projectButton);
-			projectsContainer.appendChild(titleDom);
+			titleDomContainer.appendChild(titleDom);
+			titleDomContainer.appendChild(deleteProjectButton);
+			projectsContainer.appendChild(titleDomContainer);
 		}
 	};
 
@@ -82,6 +95,14 @@ export const Controller = (function() {
 			projectForm.reset();
 		});
 	};
+
+	const removeProject = (targetProjectTitle) => {
+		let removeTarget = document.getElementById(`${targetProjectTitle}`);
+		removeTarget.remove();
+
+		ProjectManager.removeProject(targetProjectTitle);
+
+	}
 
 	const addTask = () => {
 		taskForm.addEventListener("submit", (event) => {

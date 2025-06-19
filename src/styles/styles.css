@@ -132,3 +132,8 @@ button {
 .task__info {
 	font-size: 1rem;
 }
+
+.title__dom__container {
+	display: flex;
+	justify-content: space-between;
+}

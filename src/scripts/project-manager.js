@@ -1,7 +1,7 @@
 import { Project } from "./project.js";
 
 export const ProjectManager = (function() {
-	const projectArray = [];
+	let projectArray = [];
 
 	const checkDuplicateTitle = (title) => {
 		return projectArray.some(project => project.title === title);
@@ -25,7 +25,6 @@ export const ProjectManager = (function() {
 			targetProject.clearAllToDos();
 
 			projectArray.splice(index, 1);
-			targetProject = null;
 		}
 	}
 
