@@ -29,10 +29,21 @@ export class Project {
 		return this.toDos;
 	}
 
+	findToDo(itemTitle) {
+		const targetItem = this.toDos.find(item => item.title === itemTitle);
+
+		if (!(targetItem instanceof Item)) {
+			return;
+		}
+
+		return targetItem;
+	}
+
+
 	clearAllToDos() {
 		const toDoArray = this.toDos;
 		for (let i = 0; i < toDoArray.length, i++;) {
 			toDoArray[i] = null;
 		}
 	}
-}
+};
