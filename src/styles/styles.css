@@ -127,6 +127,11 @@ button {
 	gap: 10px;
 }
 
+.task__title__container {
+	display: flex;
+	justify-content: space-between;
+}
+
 .settings__container {
 	margin-top: auto;
 	align-self: flex-end;

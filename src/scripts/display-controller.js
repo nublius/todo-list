@@ -74,9 +74,15 @@ export const Controller = (function() {
 			taskContainer.id = task.title;
 			tasksContainer.appendChild(taskContainer);
 
+			const titleContainer = document.createElement("div");
+			titleContainer.classList = "task__title__container";
+
 			const titleDom = document.createElement("p");
 			titleDom.classList = "task__title";
 			titleDom.innerText = task.title;
+
+			const dueDateDom = document.createElement("div");
+			dueDateDom.innerText = `Due: ${task.dueDate}`;
 
 			const descDom = document.createElement("p");
 			descDom.classList = "task__info";
@@ -95,7 +101,9 @@ export const Controller = (function() {
 				removeTask(task.title);
 			})
 
-			taskContainer.appendChild(titleDom);
+			titleContainer.appendChild(titleDom);
+			titleContainer.appendChild(dueDateDom);
+			taskContainer.appendChild(titleContainer);
 			taskContainer.appendChild(descDom);
 			settingsContainer.appendChild(settingsTaskButton);
 			settingsContainer.appendChild(deleteTaskButton);
