@@ -63,3 +63,26 @@ textarea {
 	display: flex;
 	padding: 5px;
 }
+
+.task__modal__container {
+	background-color: #2E294E;
+	display: flex;
+	padding: 5px;
+}
+
+.form__container {
+	display: flex;
+	flex-direction: column;
+}
+
+.submit__task {
+	background-color: #76818E;
+	height: 1.5rem;
+	width: 8rem;
+	border-radius: 10px;
+	margin-top: 10px;
+}
+
+.task__exit {
+	align-self: flex-start;
+}
