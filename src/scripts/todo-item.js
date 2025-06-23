@@ -5,9 +5,11 @@ export class Item {
 		this.dueDate = dueDate;
 		this.priority = priority;
 		this.done = false;
+		this.id = crypto.randomUUID();
 	}
 
 	getProperties() {
 		console.table(this);
 	}
+
 }

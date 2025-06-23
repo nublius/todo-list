@@ -21,7 +21,6 @@ export class Project {
 
 		if (index !== -1) {
 			this.toDos.splice(index, 1);
-			item = null;
 		}
 	}
 
@@ -29,8 +28,8 @@ export class Project {
 		return this.toDos;
 	}
 
-	findToDo(itemTitle) {
-		const targetItem = this.toDos.find(item => item.title === itemTitle);
+	findToDo(itemId) {
+		const targetItem = this.toDos.find(item => item.id === itemId);
 
 		if (!(targetItem instanceof Item)) {
 			return;
@@ -39,11 +38,18 @@ export class Project {
 		return targetItem;
 	}
 
+	editToDo(id, title, description, dueDate) {
+		const targetItem = this.findToDo(id);
+		if (!targetItem) return;
+		const targetIndex = this.toDos.indexOf(targetItem);
+
+		this.toDos[targetIndex].title = title;
+		this.toDos[targetIndex].description = description;
+		this.toDos[targetIndex].dueDate = dueDate;
+	}
 
 	clearAllToDos() {
 		const toDoArray = this.toDos;
-		for (let i = 0; i < toDoArray.length, i++;) {
-			toDoArray[i] = null;
-		}
+		this.toDos = [];
 	}
 };
