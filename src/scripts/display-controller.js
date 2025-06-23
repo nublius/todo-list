@@ -6,17 +6,9 @@ import { TaskAdder } from "./task-add.js";
 
 import { TaskEditor } from "./task-edit.js";
 
-ProjectManager.addProject("To Dos", "description wowowwwwow");
-ProjectManager.addProject("Project 1", "lorem ipsum decliaieafnkewaf");
-
-ProjectManager.findProject("To Dos").addToDo("Yep", "Description here", "01/01/2002", "1");
-
-ProjectManager.findProject("Project 1").addToDo("True", "YEPERS", "01/01/2002", "2");
-
 export const Controller = (function() {
-	let projectsContainer, tasksContainer, projectForm, taskForm, currentProject, taskEditForm;
 
-	currentProject = ProjectManager.findProject("To Dos");
+	let projectsContainer, tasksContainer, projectForm, taskForm, currentProject, taskEditForm;
 
 	const initDisplay = () => {
 		projectsContainer = document.querySelector(".projects__list");
@@ -105,6 +97,7 @@ export const Controller = (function() {
 
 			deleteTaskButton.addEventListener("click", () => {
 				removeTask(task.id);
+				ProjectManager.saveToStorage();
 			})
 
 			titleContainer.appendChild(titleDom);
@@ -143,6 +136,7 @@ export const Controller = (function() {
 			tasksContainer.innerHTML = "";
 			loadProjectTasks(currentProject.title);
 			taskForm.reset();
+			TaskEditor.init();
 		})
 	}
 
@@ -181,6 +175,8 @@ export const Controller = (function() {
 		const dueDate = taskForm.dueDate.value;
 
 		currentProject.addToDo(title, description, dueDate, "1");
+
+		ProjectManager.saveToStorage();
 	}
 
 	const taskEditHandler = () => {
@@ -192,21 +188,35 @@ export const Controller = (function() {
 		currentProject.editToDo(id, title, description, dueDate);
 
 		TaskEditor.init();
+
+		ProjectManager.saveToStorage();
 	}
 
 	const clearTasksContainer = () => {
 		tasksContainer.innerHTML = "";
 	};
 
+
 	const init = () => {
+		ProjectManager.loadFromStorage();
+
+		// Only now that data is loaded, we check
+		currentProject = ProjectManager.findProject("To Dos");
+
+		if (!currentProject) {
+			ProjectManager.addProject("To Dos", "Default project");
+			currentProject = ProjectManager.findProject("To Dos");
+		}
+
 		initDisplay();
 		loadProjects();
-		loadProjectTasks("To Dos");
+		loadProjectTasks(currentProject.title);
 		addProject();
 		addTask();
 		editTask();
 		TaskEditor.init();
 	};
+
 
 	return { init };
 

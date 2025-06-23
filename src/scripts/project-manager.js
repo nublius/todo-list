@@ -1,5 +1,7 @@
 import { Project } from "./project.js";
 
+import { Item } from "./todo-item.js";
+
 export const ProjectManager = (function() {
 	let projectArray = [];
 
@@ -15,6 +17,8 @@ export const ProjectManager = (function() {
 
 		const project = new Project(title, description);
 		projectArray.push(project);
+
+		saveToStorage();
 	}
 
 	const removeProject = (title) => {
@@ -26,6 +30,8 @@ export const ProjectManager = (function() {
 
 			projectArray.splice(index, 1);
 		}
+
+		saveToStorage();
 	}
 
 	const getProjectArray = () => {
@@ -42,10 +48,34 @@ export const ProjectManager = (function() {
 		return targetProject;
 	}
 
+	const saveToStorage = () => {
+		localStorage.setItem("allProjects", JSON.stringify(projectArray));
+		console.log("saved");
+	};
+
+	const loadFromStorage = () => {
+		const raw = localStorage.getItem("allProjects");
+		if (!raw) return;
+
+		const parsed = JSON.parse(raw);
+		projectArray = parsed.map(data => {
+			const project = new Project(data.title, data.description);
+			data.toDos.forEach(todo => {
+				const item = new Item(todo.title, todo.description, todo.dueDate, todo.priority);
+				item.id = todo.id;
+				item.done = todo.done;
+				project.toDos.push(item);
+			});
+			return project;
+		});
+	};
+
 	return {
 		addProject,
 		removeProject,
 		getProjectArray,
-		findProject
+		findProject,
+		loadFromStorage,
+		saveToStorage,
 	}
 })();

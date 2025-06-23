@@ -1,5 +1,7 @@
 import { Item } from "./todo-item.js";
 
+import { ProjectManager } from "./project-manager.js";
+
 export class Project {
 	constructor(title = "Untitled", description = "") {
 		this.title = title;
